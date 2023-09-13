@@ -1,0 +1,6 @@
+.pokemon-list-wrapper{
+    display: grid;
+    grid-auto-flow: 3fr ;
+    align-items: center;
+    justify-content: center;
+}
