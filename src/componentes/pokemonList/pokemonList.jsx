@@ -8,18 +8,24 @@ function PokemonLIst(){
     const[pokemonList, setpokemonList]=useState([]);
     const[isLoading, setIsLoading]=useState(true);
 
-    const POKEDEX_URL='https://pokeapi.co/api/v2/pokemon';
+    const [POKEDEX_URL, setPOKEDEX_URL]=useState('https://pokeapi.co/api/v2/pokemon');
+    const [nextUrl, setNextUrl]= useState('');
+    const[prevUrl, setPrevUrl]= useState('');
+
     async function downloadPokemon(){
+        setIsLoading(true);
 
         const response = await axios.get(POKEDEX_URL);    //this download list of 20 pokemon
         const pokemonResults= response.data.results; // We get the array of pokemon from result
         //iterating over the array of pokemon , and using their url , to create an array of promises  
         // that will download those 20 pokemon 
+        console.log(response.data)
+        setNextUrl(response.data.next);
+        setPrevUrl(response.data.previous);
        const pokemonResultPromies= pokemonResults.map((pokemon)=>axios.get(pokemon.url))
 
         //passing  that promises array to axios .all
         const pokemonData= await axios.all(pokemonResultPromies); // array of 20 pokemon detailed data
-        console.log(pokemonData);
         //now iteratre on the data of each pokemon ,and extarct id, name , image, types
         const PokeListResult=  pokemonData.map((pokeData)=>{
             const pokemon =pokeData.data;
@@ -38,7 +44,7 @@ function PokemonLIst(){
     }
     useEffect( ()=>{
         downloadPokemon();
-    },[])
+    }, [POKEDEX_URL])
 
     return (
         <div className="pokemon-list-wrapper">
@@ -48,8 +54,8 @@ function PokemonLIst(){
                 }
             </div>
             <div className="controls">
-                <button>Prev</button>
-                <button>Next</button>
+                <button  disabled={prevUrl==null}  onClick={()=>setPOKEDEX_URL(prevUrl)}>Prev</button>
+                <button disabled={nextUrl==null}  onClick={()=>setPOKEDEX_URL(nextUrl)}>Next</button>
             </div>
         </div>
     )

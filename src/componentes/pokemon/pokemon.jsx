@@ -3,8 +3,8 @@ import './pokemon.css'
 function Pokemon({name, image}){
     return(
         <div className='pokemon'>
-            <div className='pokemon-nane'>{name}</div>
-            <div className='pokemon-image'><img src={image}  /></div>
+            <div className='pokemon-name'>{name}</div>
+            <div ><img src={image} className='pokemon-image' /></div>
         </div>
 
     );
