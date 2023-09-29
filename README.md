@@ -1,9 +1,9 @@
-### Pokedex
+# Pokedex
 
- # API ('https://pokeapi.co/api/v2/pokemon)
- # API pokemon(https://pokeapi.co/api/v2/pokemon/id) 
+ ### API ('https://pokeapi.co/api/v2/pokemon)
+ ### API pokemon(https://pokeapi.co/api/v2/pokemon/id) 
  
-### Setting Up the Project
+## Setting Up the Project
 
 Install dependencies locally:
 
