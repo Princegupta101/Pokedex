@@ -39,7 +39,7 @@ function usePokemonList(){
             types: pokemon.types,
         }
     });
-    console.log(PokeListResult);
+    // console.log(PokeListResult);
     setPokemonListState((state)=>({
         ...state,
         pokemonList: PokeListResult,
