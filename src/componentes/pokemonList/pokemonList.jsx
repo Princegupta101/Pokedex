@@ -13,7 +13,7 @@ function PokemonLIst(){
             </div>
             <div className="controls">
                 <button 
-                    disabled={pokemonListState.nextUrl==null} 
+                    disabled={pokemonListState.prevUrl==null} 
                     onClick={()=>{
                         const urlToSet=pokemonListState.prevUrl;
                         setPokemonListState({...pokemonListState,POKEDEX_URL: urlToSet})
